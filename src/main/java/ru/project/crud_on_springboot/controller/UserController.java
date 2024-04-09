@@ -30,8 +30,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("users", userService.foundUser(Long.valueOf(id)));
+    public String show(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("users", userService.foundUser(id));
         return "show";
     }
 
@@ -56,9 +56,12 @@ public class UserController {
         return "editor";
     }
 
-    @PostMapping("/{id}")
-    public String update(@RequestParam("id") Long id, @ModelAttribute("users") User user) {
-        user.setId(id);
+    @PostMapping("/{id}/edit")
+    public String update(@ModelAttribute("users") @Valid User user, BindingResult bindingResult,
+                         @PathVariable("id") Long id) {
+        if (bindingResult.hasErrors())
+            return "editor";
+
         userService.updateUser(id, user);
         return "redirect:/users";
     }

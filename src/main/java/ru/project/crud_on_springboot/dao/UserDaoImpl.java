@@ -35,6 +35,7 @@ public class UserDaoImpl implements UserDao {
         user.setFirstName(update_user.getFirstName());
         user.setLastName(update_user.getLastName());
         user.setAge(update_user.getAge());
+        entityManager.merge(update_user);
     }
 
     @Override

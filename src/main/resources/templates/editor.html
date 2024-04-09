@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Update person</title>
+    <title>Update User</title>
 </head>
-
 <body>
-<form th:method="POST" th:action="@{'/users'}" th:object="${users}">
+<form th:method="POST" th:action="@{/users}" th:object="${users}">
+    <input type="hidden" th:field="*{id}" />
     <label for="name">Enter name: </label>
-    <input type="text" th:field="*{firstName}" id="name" />
-    <div style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</div>
+    <input type="text" th:field="*{firstName}" id="name">
     <br/>
-    <label for="lastname">Enter last name: </label>
-    <input type="text" th:field="*{lastName}" id="lastname" />
-    <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</div>
-    <br/>
-    <label for="age">Enter age: </label>
-    <input type="text" th:field="*{age}" id="age" />
-    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
-    <br/>
-    <input type="submit" value="Update!" /> </form>
-</body>
 
+    <label for="lastname">Enter lastname: </label>
+    <input type="text" th:field="*{lastName}" id="lastname">
+    <br/>
+
+    <label for="age">Enter Age: </label>
+    <label for="Age"></label><input type="text" th:field="*{age}" id="Age">
+    <br/>
+
+    <input type="submit" value="Update">
+</form>
+<br>
+
+<form th:action="@{/}" th:method="GET">
+    <button type="submit">All user</button>
+</form>
+</body>
 </html>
