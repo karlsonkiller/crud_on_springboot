@@ -56,7 +56,7 @@ public class UserController {
         return "editor";
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/{id}/edit")
     public String update(@ModelAttribute("users") @Valid User user, BindingResult bindingResult,
                          @PathVariable("id") Long id) {
         if (bindingResult.hasErrors())

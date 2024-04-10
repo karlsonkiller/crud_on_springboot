@@ -6,7 +6,7 @@
 </head>
 <body>
 <form th:method="POST" th:action="@{/users}" th:object="${users}">
-    <input type="hidden" th:field="*{id}" />
+
     <label for="name">Enter name: </label>
     <input type="text" th:field="*{firstName}" id="name">
     <br/>
@@ -23,8 +23,5 @@
 </form>
 <br>
 
-<form th:action="@{/}" th:method="GET">
-    <button type="submit">All user</button>
-</form>
 </body>
 </html>
